@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACCESSING...</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    color:#00ff66;
+    font-family:Consolas,monospace;
+    overflow:hidden;
+}
+
+#terminal{
+    padding:30px;
+    white-space:pre-wrap;
+    font-size:20px;
+    line-height:1.6;
+}
+
+.cursor{
+    display:inline-block;
+    width:10px;
+    height:22px;
+    background:#00ff66;
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="terminal"></div>
+
+<script>
+
+const lines = [
+
+"Initializing connection...",
+"",
+"Connecting to VRChat...",
+"",
+"[##########] 100%",
+"",
+"Scanning profile...",
+"██████████████████",
+"",
+"Loading fake database...",
+"",
+"Analyzing curiosity...",
+"",
+"✔ Bio clicked",
+"✔ Curiosity detected",
+"✔ Vibe check complete",
+"",
+"Searching...",
+"",
+"Result Found",
+"",
+"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+"",
+"🤨 WHY ARE YOU STALKING ME?",
+"",
+"You really clicked a random bio...",
+"",
+"Congratulations.",
+"You are officially",
+"",
+"🏆 CEO OF CURIOSITY 🏆",
+"",
+"Thanks for stopping by ❤️",
+"",
+"Now go touch grass 🌱"
+
+];
+
+let terminal=document.getElementById("terminal");
+let line=0;
+let character=0;
+
+function type(){
+
+    if(line>=lines.length){
+        terminal.innerHTML+='<span class="cursor"></span>';
+        return;
+    }
+
+    if(character<lines[line].length){
+
+        terminal.innerHTML+=lines[line][character];
+        character++;
+
+        setTimeout(type,25);
+
+    }else{
+
+        terminal.innerHTML+="\n";
+        line++;
+        character=0;
+
+        setTimeout(type,180);
+
+    }
+
+}
+
+type();
+
+</script>
+
+</body>
+</html>
